@@ -1,3 +1,5 @@
+name: Build and deploy Node.js app to Azure Web App - birthday
+
 # Run the workflow whenever changes are pushed into the main branch
 on:
   push:
@@ -7,7 +9,7 @@ on:
 
 # There are two jobs in this workflow - build and deploy
 jobs:
-  # Build the application for production.
+  # Builds the application for production.
   build:
     runs-on: ubuntu-latest
 
@@ -51,5 +53,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: birthday
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILEAZUREAPPSERVICE_PUBLISHPROFILE_C69ADD2F4A3A4CA8807CB771985D8AAD }} # Ensure this secret is correctly set in your repository settings
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C69ADD2F4A3A4CA8807CB771985D8AAD }} # Publish profile should always be stored as secrets in your repository Settings - Secrets and variables - Actions - secrets
           package: ./dist # Ensure this path matches the built package directory
